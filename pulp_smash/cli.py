@@ -283,7 +283,7 @@ class Service(object):
         client = Client(server_config, echo_handler)
         managers_commands = {
             'systemd': ('which', 'systemctl'),
-            'sysv': ('which', 'service'),
+            'sysv': ('sudo', 'service', 'httpd', 'status'),
         }
         for service_manager, command in managers_commands.items():
             if client.run(command).returncode == 0:
